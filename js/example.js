@@ -10,23 +10,33 @@ var ChatBox = React.createClass({
 });
 
 var ChatTextBox = React.createClass({
-    //TODO:
     getInitialState: function() {
-      return {value: 'Hello!'};
+      return {value: this.props.chatModel.text};
+      console.log('init-state');
     },
     handleChange: function(event) {
       this.setState({value: event.target.value});
+      console.log('change-event');
+    },
+    handleKeyPress: function(event) {
+      if (event.charCode == 13) {
+          this.setState({value: event.target.value});
+          this.props.chatModel.text = event.target.value;
+          console.log('key-press');
+          console.log('event.target.value: ' + event.target.value);
+      }
     },
     render: function() {
         return (
             <div className="chatTextBox">
-                <label>{this.props.chatModel.text}</label>
                 <input 
-                    type="text" 
-                    placeholder="TEXT"
+                    type="textarea" 
+                    placeholder="chat with cognitive agent."
                     value={this.state.value}
                     onChange={this.handleChange}
-                />
+                    onKeyPress={this.handleKeyPress}
+                /><br/>
+                <label>{this.props.chatModel.text}</label>
             </div>
         );
     }
