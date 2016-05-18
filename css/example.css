@@ -1,3 +1,7 @@
 .example {
   margin: 20px;
 }
+
+.chat-window {
+    height: 600px;
+}

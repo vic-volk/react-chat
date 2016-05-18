@@ -74,7 +74,7 @@ var ChatTextBox = React.createClass({
     render: function() {
         return (
             <div className="chatTextBox">
-                <div className={(this.props.className || '') + 'row' style='overflow: scroll'}>
+                <div className={(this.props.className || '') + 'row'}>
                     <MessageList data={this.props.chatList}/>
                 </div>
                 <input 
